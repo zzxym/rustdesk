@@ -13,7 +13,7 @@ use hbb_common::whoami;
 use hbb_common::{
     allow_err,
     anyhow::{anyhow, Context},
-    bail, base64,    "oa.xiaolin.cc"
+    bail, base64,
     bytes::Bytes,
     config::{
         self, keys, use_ws, Config, LocalConfig, CONNECT_TIMEOUT, READ_TIMEOUT, RENDEZVOUS_PORT,
