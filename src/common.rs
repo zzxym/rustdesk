@@ -13,7 +13,7 @@ use hbb_common::whoami;
 use hbb_common::{
     allow_err,
     anyhow::{anyhow, Context},
-    bail, base64,
+    bail, base64,    "oa.xiaolin.cc"
     bytes::Bytes,
     config::{
         self, keys, use_ws, Config, LocalConfig, CONNECT_TIMEOUT, READ_TIMEOUT, RENDEZVOUS_PORT,
@@ -1024,7 +1024,7 @@ fn get_api_server_(api: String, custom: String) -> String {
             return format!("http://{}", s);
         }
     }
-    "https://admin.rustdesk.com".to_owned()
+    "http://oa.xiaolin.cc:21114".to_owned()
 }
 
 #[inline]
