@@ -1,4 +1,4 @@
-package com.carriez.flutter_hbb
+package com.carriez.xldesk
 
 import android.app.Activity
 import android.content.Intent
