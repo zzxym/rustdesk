@@ -33,7 +33,7 @@ import kotlin.math.abs
 import kotlin.math.max
 import hbb.MessageOuterClass.KeyEvent
 import hbb.MessageOuterClass.KeyboardMode
-import hbb.KeyEventConverter
+import com.carriez.xldesk.KeyEventConverter
 
 // const val BUTTON_UP = 2
 // const val BUTTON_BACK = 0x08

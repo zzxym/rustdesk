@@ -90,6 +90,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules'
         }
     }
+    
+    // 修改APK文件名为xldesk-*.apk格式
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "xldesk-${variant.versionName}-${variant.versionCode}.apk"
+        }
+    }
 }
 
 flutter {

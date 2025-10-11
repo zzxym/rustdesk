@@ -26,6 +26,7 @@ import android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
 import android.widget.ImageView
 import android.widget.PopupMenu
 import com.caverock.androidsvg.SVG
+import com.carriez.xldesk.R
 import ffi.FFI
 import kotlin.math.abs
 
