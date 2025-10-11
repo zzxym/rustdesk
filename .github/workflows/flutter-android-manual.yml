@@ -47,11 +47,7 @@ env:
   UPLOAD_ARTIFACT: true
 
 jobs:
-  generate-bridge:
-    uses: ./.github/workflows/bridge.yml
-
   build-rustdesk-android:
-    needs: [generate-bridge]
     name: build xldesk android apk ${{ matrix.job.target }}
     runs-on: ${{ matrix.job.os }}
     strategy:
@@ -189,12 +185,6 @@ jobs:
             exit 1
           fi
         shell: bash
-
-      - name: Restore bridge files
-        uses: actions/download-artifact@master
-        with:
-          name: bridge-artifact
-          path: ./
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@v1
@@ -403,12 +393,6 @@ jobs:
         run: |
           cd $(dirname $(dirname $(which flutter)))
           [[ "3.24.5" == ${{env.ANDROID_FLUTTER_VERSION}} ]] && git apply ${{ github.workspace }}/.github/patches/flutter_3.24.4_dropdown_menu_enableFilter.diff
-
-      - name: Restore bridge files
-        uses: actions/download-artifact@master
-        with:
-          name: bridge-artifact
-          path: ./
 
       - name: Download Rustdesk library from Artifacts
         uses: actions/download-artifact@master
