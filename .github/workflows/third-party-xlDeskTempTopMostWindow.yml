@@ -36,7 +36,7 @@ jobs:
     strategy:
         fail-fast: false
     env:
-      build_output_dir: RustDeskTempTopMostWindow/WindowInjection/${{ inputs.platform }}/${{ inputs.configuration }}
+      build_output_dir: xldeskTempTopMostWindow/WindowInjection/${{ inputs.platform }}/${{ inputs.configuration }}
     steps:
       - name: Add MSBuild to PATH
         uses: microsoft/setup-msbuild@v2

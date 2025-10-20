@@ -26,19 +26,19 @@ The best open-source remote desktop client software, written in Rust.
 
 mkdir -p "%{buildroot}/usr/share/xldesk" && cp -r ${HBB}/flutter/build/linux/x64/release/bundle/* -t "%{buildroot}/usr/share/xldesk"
 mkdir -p "%{buildroot}/usr/bin"
-install -Dm 644 $HBB/res/rustdesk.service -t "%{buildroot}/usr/share/xldesk/files"
-install -Dm 644 $HBB/res/rustdesk.desktop -t "%{buildroot}/usr/share/xldesk/files"
-install -Dm 644 $HBB/res/rustdesk-link.desktop -t "%{buildroot}/usr/share/xldesk/files"
+install -Dm 644 $HBB/res/xldesk.service -t "%{buildroot}/usr/share/xldesk/files"
+install -Dm 644 $HBB/res/xldesk.desktop -t "%{buildroot}/usr/share/xldesk/files"
+install -Dm 644 $HBB/res/xldesk-link.desktop -t "%{buildroot}/usr/share/xldesk/files"
 install -Dm 644 $HBB/res/128x128@2x.png "%{buildroot}/usr/share/icons/hicolor/256x256/apps/xldesk.png"
 install -Dm 644 $HBB/res/scalable.svg "%{buildroot}/usr/share/icons/hicolor/scalable/apps/xldesk.svg"
 
 %files
 /usr/share/xldesk/*
-/usr/share/xldesk/files/rustdesk.service
+/usr/share/xldesk/files/xldesk.service
 /usr/share/icons/hicolor/256x256/apps/xldesk.png
 /usr/share/icons/hicolor/scalable/apps/xldesk.svg
-/usr/share/xldesk/files/rustdesk.desktop
-/usr/share/xldesk/files/rustdesk-link.desktop
+/usr/share/xldesk/files/xldesk.desktop
+/usr/share/xldesk/files/xldesk-link.desktop
 
 %changelog
 # let's skip this for now
@@ -56,9 +56,9 @@ case "$1" in
 esac
 
 %post
-cp /usr/share/xldesk/files/rustdesk.service /etc/systemd/system/xldesk.service
-cp /usr/share/xldesk/files/rustdesk.desktop /usr/share/applications/xldesk.desktop
-cp /usr/share/xldesk/files/rustdesk-link.desktop /usr/share/applications/xldesk-link.desktop
+cp /usr/share/xldesk/files/xldesk.service /etc/systemd/system/xldesk.service
+cp /usr/share/xldesk/files/xldesk.desktop /usr/share/applications/xldesk.desktop
+cp /usr/share/xldesk/files/xldesk-link.desktop /usr/share/applications/xldesk-link.desktop
 ln -sf /usr/share/xldesk/xldesk /usr/bin/xldesk
 systemctl daemon-reload
 systemctl enable xldesk

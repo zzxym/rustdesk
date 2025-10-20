@@ -18,7 +18,13 @@ class AppDelegate: FlutterAppDelegate {
     }
     
     override func applicationDidFinishLaunching(_ aNotification: Notification) {
+        super.applicationDidFinishLaunching(aNotification)
         launched = true;
         NSApplication.shared.activate(ignoringOtherApps: true);
+        // Register XLDESK Plugin
+        let registry = self.registrar(forPlugin: "XLDESKPlugin")
+        if let registry = registry {
+            XLDESKPlugin.register(with: registry)
+        }
     }
 }

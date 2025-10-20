@@ -2381,9 +2381,21 @@ List<String>? urlLinkToCmdArgs(Uri uri) {
     if (uri.path.length > 1) {
       id = uri.path.substring(1);
     }
-  } else if (uri.authority.length > 2 &&
+  } else if (uri.scheme == 'xldesk' && uri.authority.length > 2 &&
       (uri.path.length <= 1 ||
           (uri.path == '/r' || uri.path.startsWith('/r@')))) {
+    // xldesk://<connect-id>
+    // xldesk://<connect-id>/r
+    // xldesk://<connect-id>/r@<server>
+    command = '--connect';
+    id = uri.authority;
+    if (uri.path.length > 1) {
+      id = id + uri.path;
+    }
+  } else if (uri.scheme == 'rustdesk' && uri.authority.length > 2 &&
+      (uri.path.length <= 1 ||
+          (uri.path == '/r' || uri.path.startsWith('/r@')))) {
+    // 兼容旧版rustdesk://协议
     // rustdesk://<connect-id>
     // rustdesk://<connect-id>/r
     // rustdesk://<connect-id>/r@<server>
