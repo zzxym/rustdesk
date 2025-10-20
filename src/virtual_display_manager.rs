@@ -2,11 +2,11 @@ use hbb_common::{bail, platform::windows::is_windows_version_or_greater, ResultT
 
 // This string is defined here.
 //  https://github.com/rustdesk-org/RustDeskIddDriver/blob/b370aad3f50028b039aad211df60c8051c4a64d6/RustDeskIddDriver/RustDeskIddDriver.inf#LL73C1-L73C40
-pub const RUSTDESK_IDD_DEVICE_STRING: &'static str = "RustDeskIddDriver Device\0";
+pub const XLDESK_IDD_DEVICE_STRING: &'static str = "xldeskIddDriver Device\0";
 pub const AMYUNI_IDD_DEVICE_STRING: &'static str = "USB Mobile Monitor Virtual Display\0";
 
 const IDD_IMPL: &str = IDD_IMPL_AMYUNI;
-const IDD_IMPL_RUSTDESK: &str = "rustdesk_idd";
+const IDD_IMPL_RUSTDESK: &str = "xldesk_idd";
 const IDD_IMPL_AMYUNI: &str = "amyuni_idd";
 const IDD_PLUG_OUT_ALL_INDEX: i32 = -1;
 
@@ -16,7 +16,7 @@ pub fn is_amyuni_idd() -> bool {
 
 pub fn get_cur_device_string() -> &'static str {
     match IDD_IMPL {
-        IDD_IMPL_RUSTDESK => RUSTDESK_IDD_DEVICE_STRING,
+        IDD_IMPL_RUSTDESK => XLDESK_IDD_DEVICE_STRING,
         IDD_IMPL_AMYUNI => AMYUNI_IDD_DEVICE_STRING,
         _ => "",
     }
@@ -52,7 +52,7 @@ pub fn get_platform_additions() -> serde_json::Map<String, serde_json::Value> {
             let virtual_displays = rustdesk_idd::get_virtual_displays();
             if !virtual_displays.is_empty() {
                 map.insert(
-                    "rustdesk_virtual_displays".into(),
+                    "xldesk_virtual_displays".into(),
                     serde_json::json!(virtual_displays),
                 );
             }

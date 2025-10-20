@@ -136,14 +136,9 @@ fn check_update(manually: bool) -> ResultType<()> {
         let version = download_url.split('/').last().unwrap_or_default();
         #[cfg(target_os = "windows")]
         let download_url = if cfg!(feature = "flutter") {
-            format!(
-                "{}/rustdesk-{}-x86_64.{}",
-                download_url,
-                version,
-                if is_msi { "msi" } else { "exe" }
-            )
+            format!("{}/xldesk-{}-x86-{}", download_url, version, if is_msi { "msi" } else { "exe" })
         } else {
-            format!("{}/rustdesk-{}-x86-sciter.exe", download_url, version)
+            format!("{}/xldesk-{}-x86-sciter.exe", download_url, version)
         };
         log::debug!("New version available: {}", &version);
         let client = create_http_client();
