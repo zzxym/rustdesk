@@ -60,6 +60,32 @@ const val MAX_SCREEN_SIZE = 1200
 const val VIDEO_KEY_BIT_RATE = 1024_000
 const val VIDEO_KEY_FRAME_RATE = 30
 
+// Request codes
+const val REQ_CLIENT_AUTHORIZED = 1
+const val REQ_VOICE_CALL_REQUEST = 2
+const val REQ_LOCAL_NAME_CHANGED = 3
+const val REQ_REQUEST_MEDIA_PROJECTION_RES = 4
+const val REQ_REQUEST_SCREEN_SHARE = 5
+const val REQ_REQUEST_SCREEN_SHARE_RES = 6
+const val REQ_REQUEST_MEDIA_PROJECTION = 7
+const val REQ_LOGIN_REQUEST = 8
+
+// Notification action codes
+const val NLR_PROTECT_REJECT = 1
+const val NLR_PROTECT_ACCEPT = 2
+const val NLR_PROTECT_SELECTED = 3
+const val NLR_PROTECT_DISCONNECT = 4
+const val NLR_PROTECT_ACCEPT_SELECT = 5
+const val NLR_PROTECT_REJECT_SELECT = 6
+const val NLR_PROTECT_DISCONNECT_SELECT = 7
+
+// WebDAV URL
+const val WEBDAV_URL = "webdav_url"
+
+// Notification channel IDs
+const val NOTIFICATION_CHANNEL_ID = "hbb_channel"
+const val NOTIFICATION_CHANNEL_ID_VOICE = "hbb_channel_voice"
+
 class MainService : Service() {
 
     @Keep
