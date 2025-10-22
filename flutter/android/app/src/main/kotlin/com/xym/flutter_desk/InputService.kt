@@ -1,5 +1,9 @@
 package com.xym.flutter_desk
 
+// 导入VolumeController类，它位于不同的包中
+import com.carriez.flutter_hbb.VolumeController
+// SCREEN_INFO在同一个包中，不需要额外导入
+
 /**
  * Handle remote input and dispatch android gesture
  *
@@ -27,6 +31,8 @@ import android.accessibilityservice.AccessibilityServiceInfo.FLAG_INPUT_METHOD_E
 import android.accessibilityservice.AccessibilityServiceInfo.FLAG_RETRIEVE_INTERACTIVE_WINDOWS
 import android.view.inputmethod.EditorInfo
 import androidx.annotation.RequiresApi
+import androidx.media.session.MediaSessionManagerCompat
+import android.telecom.TelecomManager
 import java.util.*
 import java.lang.Character
 import kotlin.math.abs
@@ -89,7 +95,8 @@ class InputService : AccessibilityService() {
     private var lastX = 0
     private var lastY = 0
 
-    private val volumeController: VolumeController by lazy { VolumeController(applicationContext.getSystemService(AUDIO_SERVICE) as AudioManager) }
+    private val audioManager: AudioManager by lazy { applicationContext.getSystemService(AUDIO_SERVICE) as AudioManager }
+    private val volumeController: VolumeController by lazy { VolumeController(audioManager) }
 
     @RequiresApi(Build.VERSION_CODES.N)
     fun onMouseInput(mask: Int, _x: Int, _y: Int) {
@@ -597,7 +604,7 @@ class InputService : AccessibilityService() {
         this.fakeEditTextForTextStateCalculation?.setSelection(0,0)
         this.fakeEditTextForTextStateCalculation?.setText(null)
 
-        val text = node.getText()
+        val text: CharSequence? = node.getText()
         var isShowingHint = false
         if (Build.VERSION.SDK_INT >= 26) {
             isShowingHint = node.isShowingHintText()
@@ -661,8 +668,8 @@ class InputService : AccessibilityService() {
                     val succ = it.onKeyDown(event.getKeyCode(), event)
                     Log.d(logTag, "onKeyDown $succ")
                 } else if (event.action == KeyEventAndroid.ACTION_UP) {
-                    val success = it.onKeyUp(event.getKeyCode(), event)
-                    Log.d(logTag, "keyup $success")
+                    val keyupSuccess = it.onKeyUp(event.getKeyCode(), event)
+                    Log.d(logTag, "keyup $keyupSuccess")
                 } else {}
             }
 

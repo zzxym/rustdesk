@@ -67,8 +67,7 @@ const val REQ_LOCAL_NAME_CHANGED = 3
 const val REQ_REQUEST_MEDIA_PROJECTION_RES = 4
 const val REQ_REQUEST_SCREEN_SHARE = 5
 const val REQ_REQUEST_SCREEN_SHARE_RES = 6
-const val REQ_REQUEST_MEDIA_PROJECTION = 7
-const val REQ_LOGIN_REQUEST = 8
+const val REQ_LOGIN_REQUEST = 7
 
 // Notification action codes
 const val NLR_PROTECT_REJECT = 1
