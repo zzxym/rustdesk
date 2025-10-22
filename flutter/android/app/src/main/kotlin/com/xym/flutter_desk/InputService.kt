@@ -31,7 +31,7 @@ import android.accessibilityservice.AccessibilityServiceInfo.FLAG_INPUT_METHOD_E
 import android.accessibilityservice.AccessibilityServiceInfo.FLAG_RETRIEVE_INTERACTIVE_WINDOWS
 import android.view.inputmethod.EditorInfo
 import androidx.annotation.RequiresApi
-import androidx.media.session.MediaSessionManagerCompat
+import android.media.session.MediaSessionManager
 import android.telecom.TelecomManager
 import java.util.*
 import java.lang.Character
